@@ -2,14 +2,15 @@ const express = require("express");
 const app = express()
 const collection = require("./mongodb")
 const path = require('path');
-const ejs = require('ejs')
+const hbs = require('hbs')
+
 const tempelatePath= path.join(__dirname,"../tempelates") 
 
 
 app.use(express.json())
 app.set("views", tempelatePath)
-app.set('view engine', 'ejs');
-app.use('/signup', express.static(path.join(__dirname, 'static')))
+app.set('view engine', 'hbs');
+//app.use('/signup', express.static(path.join(__dirname, 'static')))
 app.use(express.urlencoded({extended:false }))
 
 //app.use(express.static(path.resolve(__dirname, "public")))
@@ -27,32 +28,31 @@ app.post('/signup', function(req,res){
 
 
 app.get('/', (req, res) => {
-    res.render("index");
+    res.render(__dirname + "/index.hbs");
 })
 app.get('/login', (req, res) => {
-    res.render(__dirname + "/login.ejs");
+    res.render(__dirname + "/login.hbs");
 })
 
 
 app.get('/signup', (req, res) => {
-    res.render(__dirname + "/signup.ejs");
+    res.render(__dirname + "/signup.hbs");
 })
 
 
 app.post("/signup", async(req,res) =>{
 
-    const data = {
+    var data = {
         fullname: req.body.fullname,
         password: req.body.password
     }
 
-    await collection.insertMany([data])
-
-    res.render("done")
+await collection.insertMany(data)
+res.render(__dirname + "/done.hbs")
      
 })
 
 
-app.listen(8080,()=>{
+app.listen(3000,()=>{
     console.log("Port connected successfully");
 })

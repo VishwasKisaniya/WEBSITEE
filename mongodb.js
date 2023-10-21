@@ -2,10 +2,7 @@
 
 const mongoose= require("mongoose")
 
-mongoose.connect('mongodb://127.0.0.1:27017/loginregisterdb',{
-useNewUrlParser: true,
-useUnifiedTopology: true
-})
+mongoose.connect('mongodb://localhost:27017/loginregisterdb')
 
 
 
@@ -18,20 +15,28 @@ useUnifiedTopology: true
     console.log(e)
 })
 
-const LoginSchema = new mongoose.Schema({
+const SignupSchema = new mongoose.Schema({
     fullname:{
         type : String,
         required : true
     },
     password:{
         type : String,
+        required : true
+    },
+    email:{
+        type : String,
+        required : true
+    },
+    password:{
+        type : Number,
         required : true 
     }
 
 })
 
 
-const collection =new mongoose.model("Connection1", LoginSchema)
+const collection =new mongoose.model("SignupConnection", SignupSchema)
 
 
 module.exports = collection 
