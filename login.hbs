@@ -136,7 +136,7 @@ body {
 	border-bottom-color: #6A679E;
 }
 
-.login__submit {
+.button {
 	background: #fff;
 	font-size: 14px;
 	margin-top: 30px;
@@ -234,6 +234,13 @@ body {
 				
 
 			</form>
+					<style>
+						.hello{
+							width: 320px;
+							padding: 30px;
+							padding-top: 5px;
+							}
+					</style>
             <a href="/signup">
 				<div class="hello">
                     <button class="button registered_submit" id="gotosignup">
@@ -242,13 +249,6 @@ body {
                         </span>
                         <i class="button__icon fas fa-chevron-right"></i>
                     </button>
-					<style>
-						.hello{
-							width: 320px;
-							padding: 30px;
-							padding-top: 5px;
-							}
-					</style>
                     <script>
                         document.getElementById("gotosignup").addEventListener("click", function() {
                             window.location.href = "/signup";

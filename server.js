@@ -46,10 +46,12 @@ app.post("/signup", async(req,res) =>{
         fullname: req.body.fullname,
         password: req.body.password
     }
+    console.log("data accepted");
 
-await collection.insertMany(data)
-res.render(__dirname + "/done.hbs")
-     
+    await collection.insertMany(data)
+    console.log("Inserted data somehow");
+    res.render(__dirname + "/done.hbs")
+     console.log("HBFS");
 })
 
 
