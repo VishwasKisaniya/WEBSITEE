@@ -48,7 +48,7 @@ app.post("/signup", async(req,res) =>{
     }
     console.log("data accepted");
 
-    await collection.insertMany(data)
+    await collection.insertOne(data)
     console.log("Inserted data somehow");
     res.render(__dirname + "/done.hbs")
      console.log("HBFS");
